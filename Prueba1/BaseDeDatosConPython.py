@@ -30,12 +30,14 @@ def usuarios():
 def crear_usuario():
     print("Crear usuario")
     usr = input("Ingrese nombre de usuario: ")
-    # clear()
+    clear()
     if existe_usuario(usr):
         print("ERROR: El nombre", usr, "ya está siendo utilizado")
     else:
         pwd = input("Ingrese contraseña: ")
+        clear()
         lvl = input("Ingrese nivel (1,2 o 3): ")
+        clear()
         conexion.execute("INSERT INTO users VALUES('" + usr + "','" + pwd + "'," + lvl + ")")
         conexion.commit()
         print("Usuario", usr, "creado correctamente")
@@ -44,7 +46,7 @@ def crear_usuario():
 def eliminar_usuario():
     print("Eliminar usuario")
     usr = input("Ingrese nombre de usuario: ")
-    # clear()
+    clear()
     if existe_usuario(usr):
         conexion.execute("DELETE FROM users WHERE username = '" + usr + "'")
         conexion.commit()
@@ -60,13 +62,13 @@ def existe_usuario(usr):
 
 
 # Menu
-# clear()
+clear()
 salir = False
 while not salir:
     print("Programa Épico-Fantástico")
     print("1-Ver Usuarios\n2-Crear Usuario\n3-Eliminar Usuario\n4-Salir")
     opcion = input("Opción: ")
-    # clear()
+    clear()
     if opcion == "1":
         print("Usuarios en el sistema: ")
         print(usuarios(), "\n")
