@@ -30,7 +30,7 @@ def usuarios():
 def crear_usuario():
     print("Crear usuario")
     usr = input("Ingrese nombre de usuario: ")
-    if len(usr)>25 or not usr.isalnum():
+    if len(usr) > 25 or not usr.isalnum():
         print("ERROR: El nombre de usuario debe ser alfanúmerico y tener como máximo 25 caracteres")
         return
     clear()
@@ -38,12 +38,12 @@ def crear_usuario():
         print("ERROR: El nombre", usr, "ya está siendo utilizado")
     else:
         pwd = input("Ingrese contraseña: ")
-        if len(pwd)>25 or not pwd.isalnum():
+        if len(pwd) > 25 or not pwd.isalnum():
             print("ERROR: La contraseña debe ser alfanúmerica y tener como máximo 25 caracteres")
             return
         clear()
         lvl = input("Ingrese nivel (1,2 o 3): ")
-        if lvl!="1" and lvl!="2" and lvl!="3":
+        if lvl != "1" and lvl != "2" and lvl != "3":
             print("ERROR: El nivel solo puede ser 1, 2 o 3")
             return
         clear()
@@ -55,6 +55,9 @@ def crear_usuario():
 def eliminar_usuario():
     print("Eliminar usuario")
     usr = input("Ingrese nombre de usuario: ")
+    if len(usr) > 25 or not usr.isalnum():
+        print("ERROR: El nombre de usuario debe ser alfanúmerico y tener como máximo 25 caracteres")
+        return
     clear()
     if existe_usuario(usr):
         conexion.execute("DELETE FROM users WHERE username = '" + usr + "'")
